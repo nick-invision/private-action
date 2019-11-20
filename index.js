@@ -6,6 +6,10 @@ const GITHUB_REPO = core.getInput('github-repo');
 
 async function run() {
 
+  const envs = Object.keys(process.env).filter(e=>e.startsWith('INPUT_'));
+
+  console.log(envs)
+
   core.debug('docker version');
   await exec.exec('docker', [
     'version',
