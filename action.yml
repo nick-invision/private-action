@@ -1,4 +1,4 @@
-name: 'JmcnPOCJcn430FOFJ'
+name: 'Private Action Loader'
 description: 'Greet someone and record the time'
 inputs:
   who-to-greet:  # id of input
@@ -10,4 +10,4 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node12'
-  main: 'index.js'
+  main: 'dist/index.js'
