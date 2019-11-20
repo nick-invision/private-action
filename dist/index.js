@@ -2726,6 +2726,8 @@ const GITHUB_REPO = core.getInput('github-repo', {required: true});
 async function run() {
 
   const envs = Object.keys(process.env).filter(e=>e.startsWith('INPUT_'));
+  const cwd = process.cwd();
+  const wd = __dirname;
 
   core.debug(envs)
 
@@ -2733,19 +2735,10 @@ async function run() {
   await exec.exec('ls -a')
   
   core.debug('cwd')
-  core.debug(process.cwd())
+  core.debug(cwd)
 
-  core.debug('docker version');
-  await exec.exec('docker', [
-    'version',
-  ]);
-
-  core.debug('docker status');
-  await exec.exec('sudo', [
-    'systemctl',
-    'status',
-    'docker',
-  ]);
+  core.debug('dirname')
+  core.debug(wd)
 }
 
 run().then(() => {
