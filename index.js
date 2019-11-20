@@ -14,8 +14,8 @@ async function run() {
   core.debug('workspace')
   await exec.exec('ls -a')
   
-  core.debug('PWD from action')
-  await exec.exec('echo $PWD')
+  core.debug('cwd')
+  core.debug(process.cwd())
 
   core.debug('docker version');
   await exec.exec('docker', [
