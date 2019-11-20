@@ -7,6 +7,9 @@ inputs:
   github-repo:
     description: 'The organization/user and repo where action is stored'
     required: true
+  github-branch:
+    description: 'The branch to pull private action from. Defaults to master'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
