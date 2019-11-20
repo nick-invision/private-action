@@ -5,7 +5,7 @@ inputs:
     description: 'Token with read access to repo containing action'
     required: true
   github-repo:
-    description: 'The organization/user and  repo where action is stored'
+    description: 'The organization/user and repo where action is stored'
     required: true
 runs:
   using: 'node12'
