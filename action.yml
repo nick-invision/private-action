@@ -1,13 +1,13 @@
 name: private-action
 description: 'Pulls a private action into the current workspace'
 inputs:
-  github-token:
+  repo-token:
     description: 'Token with read access to repo containing action'
     required: true
-  github-repo:
+  repo-name:
     description: 'The organization/user and repo where action is stored'
     required: true
-  github-branch:
+  repo-branch:
     description: 'The branch to pull private action from. Defaults to master'
     required: false
     default: master

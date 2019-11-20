@@ -1350,9 +1350,9 @@ const {parse} = __webpack_require__(521);
 const {readFileSync} = __webpack_require__(747);
 const {join} = __webpack_require__(622);
 
-const GITHUB_TOKEN = core.getInput('github-token', {required: true});
-const GITHUB_REPO = core.getInput('github-repo', {required: true});
-const GITHUB_BRANCH = core.getInput('github-branch', {required: false});
+const GITHUB_TOKEN = core.getInput('repo-token', {required: true});
+const GITHUB_REPO = core.getInput('repo-name', {required: true});
+const GITHUB_BRANCH = core.getInput('repo-branch', {required: false});
 
 const DEFAULT_BRANCH = 'master'
 const WORKING_DIR = './.private-action'
