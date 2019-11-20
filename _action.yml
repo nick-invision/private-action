@@ -1,0 +1,17 @@
+name: private-action
+description: 'Pulls a private action into the current workspace'
+inputs:
+  github-token:
+    description: 'Token with read access to repo containing action'
+    required: true
+  github-organization:
+    description: 'The organization or user where repo is stored'
+    required: true
+  github-repo:
+    description: 'The name of the repo (not included org/user)'
+    required: true
+  
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args: ["bash", "-c", "${{ inputs.cmd }}"]

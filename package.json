@@ -1,0 +1,23 @@
+{
+  "name": "private-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nick-invision/private-action.git"
+  },
+  "author": "Nick Fields",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nick-fields/private-action/issues"
+  },
+  "homepage": "https://github.com/nick-fields/private-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^1.1.0"
+  }
+}
