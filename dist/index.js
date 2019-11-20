@@ -1346,7 +1346,8 @@ module.exports = require("os");
 
 const exec = __webpack_require__(986);
 const core = __webpack_require__(470);
-const yaml = __webpack_require__(521);
+const {parse} = __webpack_require__(521);
+const {readFileSync} = __webpack_require__(747)
 
 const GITHUB_TOKEN = core.getInput('github-token', {required: true});
 const GITHUB_REPO = core.getInput('github-repo', {required: true});
@@ -1370,8 +1371,11 @@ async function run() {
   core.info('Cloning private action');
   await exec.exec(cmd);
 
-  const actionYml = yaml.parse(`${WORKING_DIR}/action.yml`);
-  core.info(`yml: ${JSON.stringify(actionYml), null, 2}`)
+  const actionFile = readFileSync(`${WORKING_DIR}/action.yml`, 'utf8');
+  const actionYml = yaml.parseactionFile
+  core.info(`yml: ${JSON.stringify(actionYml, null, 2)}`)
+  core.info(`yml: ${actionYml}`)
+  core.info(actionYml)
 }
 
 run().then(() => {
@@ -5773,6 +5777,13 @@ function resolveComments(collection, comments) {
     }
   }
 }
+
+/***/ }),
+
+/***/ 747:
+/***/ (function(module) {
+
+module.exports = require("fs");
 
 /***/ }),
 

@@ -1,6 +1,7 @@
 const exec = require('@actions/exec');
 const core = require('@actions/core');
-const yaml = require('yaml');
+const {parse} = require('yaml');
+const {readFileSync} = require('fs')
 
 const GITHUB_TOKEN = core.getInput('github-token', {required: true});
 const GITHUB_REPO = core.getInput('github-repo', {required: true});
@@ -24,8 +25,11 @@ async function run() {
   core.info('Cloning private action');
   await exec.exec(cmd);
 
-  const actionYml = yaml.parse(`${WORKING_DIR}/action.yml`);
-  core.info(`yml: ${JSON.stringify(actionYml), null, 2}`)
+  const actionFile = readFileSync(`${WORKING_DIR}/action.yml`, 'utf8');
+  const actionYml = yaml.parseactionFile
+  core.info(`yml: ${JSON.stringify(actionYml, null, 2)}`)
+  core.info(`yml: ${actionYml}`)
+  core.info(actionYml)
 }
 
 run().then(() => {
