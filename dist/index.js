@@ -1381,7 +1381,7 @@ async function run() {
 
   core.info(`Starting private action ${action.name}`)
   core.startGroup(`${action.name}`)
-  await exec.exec(join(WORKING_DIR, action.runs.main))
+  await exec.exec(`node ${join(WORKING_DIR, action.runs.main)}`)
   core.endGroup(`${action.name}`)
 }
 
