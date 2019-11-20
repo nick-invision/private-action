@@ -26,7 +26,7 @@ async function run() {
   await exec.exec(cmd);
 
   const actionFile = readFileSync(`${WORKING_DIR}/action.yml`, 'utf8');
-  const actionYml = yaml.parseactionFile
+  const actionYml = parse(actionFile);
   core.info(`yml: ${JSON.stringify(actionYml, null, 2)}`)
   core.info(`yml: ${actionYml}`)
   core.info(actionYml)
