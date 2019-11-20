@@ -1,13 +1,12 @@
-name: 'Private Action Loader'
-description: 'Greet someone and record the time'
+name: private-action
+description: 'Pulls a private action into the current workspace'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  github-token:
+    description: 'Token with read access to repo containing action'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  github-repo:
+    description: 'The organization/user and  repo where action is stored'
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'
