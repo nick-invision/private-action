@@ -10,6 +10,7 @@ inputs:
   github-branch:
     description: 'The branch to pull private action from. Defaults to master'
     required: false
+    default: master
 runs:
   using: 'node12'
   main: 'dist/index.js'

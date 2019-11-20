@@ -1347,7 +1347,8 @@ module.exports = require("os");
 const exec = __webpack_require__(986);
 const core = __webpack_require__(470);
 const {parse} = __webpack_require__(521);
-const {readFileSync} = __webpack_require__(747)
+const {readFileSync} = __webpack_require__(747);
+const {join} = __webpack_require__(622);
 
 const GITHUB_TOKEN = core.getInput('github-token', {required: true});
 const GITHUB_REPO = core.getInput('github-repo', {required: true});
@@ -1372,10 +1373,16 @@ async function run() {
   await exec.exec(cmd);
 
   const actionFile = readFileSync(`${WORKING_DIR}/action.yml`, 'utf8');
-  const actionYml = parse(actionFile);
-  core.info(`yml: ${JSON.stringify(actionYml, null, 2)}`)
-  core.info(`yml: ${actionYml}`)
-  core.info(actionYml)
+  const action = parse(actionFile);
+
+  if (!(action && action.name && action.runs && action.runs.main)) {
+    throw `Malformed action.yml found`
+  }
+
+  core.info(`Starting private action ${action.name}`)
+  core.startGroup(`${action.name}`)
+  await exec.exec(join(WORKING_DIR, action.runs.main))
+  core.endGroup(`${action.name}`)
 }
 
 run().then(() => {
